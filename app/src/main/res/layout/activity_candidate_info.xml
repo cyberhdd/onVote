@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VoteActivity">
+    tools:context=".CandidateInfoActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Candidate Voting"
+            android:text="Candidate Information"
             android:textSize="30sp"
             android:textAppearance="?attr/textAppearanceHeadline6" />
         <LinearLayout
@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Note: Only one vote per student" />
+                android:text="Note: You are viewing an approved candidate information" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                     android:gravity="center_vertical"
                     android:text="Faculty: " />
                 <TextView
-                    android:id="@+id/tvVoteFac"
+                    android:id="@+id/tvInfoFac"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
@@ -93,7 +93,7 @@
 
         </LinearLayout>
 
-        <!--Results-->
+        <!--Application-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,7 +114,18 @@
                     android:layout_margin="10dp"
                     android:orientation="vertical">
 
-                    <!-- Row Heading -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="Candidate information" />
+
+                    <!--Name-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -123,56 +134,22 @@
                         android:layout_marginTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true"
-                                android:textStyle="bold"
-                                android:gravity="center_vertical"
-                                android:text="Name" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.6"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true"
-                                android:textStyle="bold"
-                                android:gravity="center"
-                                android:text="Selection" />
-                        </LinearLayout>
-
-
-
-                    </LinearLayout>
-
-                    <!-- Row 1 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:layout_marginTop="10dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
-
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.8"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:gravity="center_vertical"
+                                android:text="Name:" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.2"
                             android:orientation="horizontal">
                             <TextView
                                 android:layout_width="match_parent"
@@ -181,198 +158,131 @@
                                 android:gravity="center_vertical"
                                 android:text="Tan Ee Shuen" />
                         </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.6"
-                            android:orientation="horizontal">
-                            <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.Material3.Button"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
-                                app:icon="@drawable/baseline_vote_24"
-                                android:text="Vote" />
-                        </LinearLayout>
-
-
-
                     </LinearLayout>
 
-                    <!-- Row 2 -->
+                    <!--StudentID-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
+                        android:layout_marginTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
-
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.8"
                             android:orientation="horizontal">
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:gravity="center_vertical"
-                                android:text="Rayyana Rofifah" />
+                                android:text="StudentID:" />
                         </LinearLayout>
-
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.6"
-                            android:orientation="horizontal">
-                            <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.Material3.Button"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
-                                app:icon="@drawable/baseline_vote_24"
-                                android:text="Vote" />
-                        </LinearLayout>
-
-
-
-                    </LinearLayout>
-
-                    <!-- Row 3 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.2"
                             android:orientation="horizontal">
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:gravity="center_vertical"
-                                android:text="Christian Tan" />
+                                android:text="SWE1909115" />
                         </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.6"
-                            android:orientation="horizontal">
-                            <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.Material3.Button"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
-                                app:icon="@drawable/baseline_vote_24"
-                                android:text="Vote" />
-                        </LinearLayout>
-
-
-
                     </LinearLayout>
 
-                    <!-- Row 4 -->
+
+                    <!--StudentID-->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
+                        android:layout_marginTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
-
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.8"
                             android:orientation="horizontal">
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:gravity="center_vertical"
-                                android:text="Abubadi Abduh" />
+                                android:text="Email:" />
                         </LinearLayout>
-
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.6"
-                            android:orientation="horizontal">
-                            <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.Material3.Button"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
-                                app:icon="@drawable/baseline_vote_24"
-                                android:text="Vote" />
-                        </LinearLayout>
-
-
-
-                    </LinearLayout>
-
-                    <!-- Row 5 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.2"
                             android:orientation="horizontal">
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:gravity="center_vertical"
-                                android:text="Yew Yuin Tong" />
+                                android:text="SWE1909115@xmu.edu.my" />
                         </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.6"
-                            android:orientation="horizontal">
-                            <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.Material3.Button"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerHorizontal="true"
-                                app:icon="@drawable/baseline_vote_24"
-                                android:text="Vote" />
-                        </LinearLayout>
-
-
-
                     </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="Candidate achievements" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical"
+                        android:text="Top 20 Scholarship Recipient (2022)" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical"
+                        android:text="Rotary Club President (2022)" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical"
+                        android:text="XMUM Hackathon Champion (2021)" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center_vertical"
+                        android:textSize="20sp"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="Candidate manifesto" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="10dp"
+                        android:gravity="center_vertical"
+                        android:text="I aspire to enable students to have their voices heard more throughout the campus. This is regardless of the race, ethnicity, relogion, and gender. This is eo enable a more inclusive and united student body." />
 
                 </LinearLayout>
-
-
-
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 

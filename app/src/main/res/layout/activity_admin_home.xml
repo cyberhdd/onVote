@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VoteActivity">
+    tools:context=".AdminHomeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:text="Candidate Voting"
+            android:text="Candidate Applications"
             android:textSize="30sp"
             android:textAppearance="?attr/textAppearanceHeadline6" />
         <LinearLayout
@@ -27,11 +27,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Note: Only one vote per student" />
+                android:text="Please review the candidate applications" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Signed in as: Madalitso" />
+                android:text="Signed in as: Admin" />
         </LinearLayout>
 
 
@@ -66,12 +66,12 @@
                     android:gravity="center_vertical"
                     android:text="Faculty: " />
                 <TextView
-                    android:id="@+id/tvVoteFac"
+                    android:id="@+id/tvAdminApplicationFac"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
                     android:gravity="center_vertical"
-                    android:text="CST" />
+                    android:text="All" />
             </LinearLayout>
 
             <LinearLayout
@@ -128,7 +128,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.25"
                             android:orientation="horizontal">
                             <TextView
                                 android:layout_width="match_parent"
@@ -139,11 +139,10 @@
                                 android:text="Name" />
                         </LinearLayout>
 
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0.6"
+                            android:layout_weight="0.35"
                             android:orientation="horizontal">
                             <TextView
                                 android:layout_width="match_parent"
@@ -151,7 +150,21 @@
                                 android:layout_centerInParent="true"
                                 android:textStyle="bold"
                                 android:gravity="center"
-                                android:text="Selection" />
+                                android:text="Approval" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0.4"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:text="Info" />
                         </LinearLayout>
 
 
@@ -168,206 +181,210 @@
                         android:weightSum="1"
                         android:orientation="horizontal">
 
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.25"
                             android:orientation="horizontal">
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:gravity="center_vertical"
-                                android:text="Tan Ee Shuen" />
+                                android:text="Marrack Yong" />
                         </LinearLayout>
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.6"
+                            android:layout_weight="0.35"
                             android:orientation="horizontal">
                             <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.Material3.Button"
+                                android:id="@+id/btnAdminApplicationApprove"
+                                style="@style/Widget.Material3.Button.TextButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerHorizontal="true"
-                                app:icon="@drawable/baseline_vote_24"
-                                android:text="Vote" />
+                                android:text="Approve" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.4"
+                            android:orientation="horizontal">
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnAdminApplicationView"
+                                style="@style/Widget.Material3.Button.TextButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerHorizontal="true"
+                                android:text="View" />
                         </LinearLayout>
 
 
 
                     </LinearLayout>
 
-                    <!-- Row 2 -->
+                    <!-- Row 1 -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
+                        android:layout_marginTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.25"
                             android:orientation="horizontal">
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:gravity="center_vertical"
-                                android:text="Rayyana Rofifah" />
+                                android:text="Huang Yu" />
                         </LinearLayout>
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.6"
+                            android:layout_weight="0.35"
                             android:orientation="horizontal">
                             <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.Material3.Button"
+                                style="@style/Widget.Material3.Button.TextButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerHorizontal="true"
-                                app:icon="@drawable/baseline_vote_24"
-                                android:text="Vote" />
+                                android:text="Approve" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.4"
+                            android:orientation="horizontal">
+                            <com.google.android.material.button.MaterialButton
+                                style="@style/Widget.Material3.Button.TextButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerHorizontal="true"
+                                android:text="View" />
                         </LinearLayout>
 
 
 
                     </LinearLayout>
 
-                    <!-- Row 3 -->
+                    <!-- Row 1 -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
+                        android:layout_marginTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.25"
                             android:orientation="horizontal">
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:gravity="center_vertical"
-                                android:text="Christian Tan" />
+                                android:text="Marcus Venti" />
                         </LinearLayout>
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.6"
+                            android:layout_weight="0.35"
                             android:orientation="horizontal">
                             <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.Material3.Button"
+                                style="@style/Widget.Material3.Button.TextButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerHorizontal="true"
-                                app:icon="@drawable/baseline_vote_24"
-                                android:text="Vote" />
+                                android:text="Approve" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.4"
+                            android:orientation="horizontal">
+                            <com.google.android.material.button.MaterialButton
+                                style="@style/Widget.Material3.Button.TextButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerHorizontal="true"
+                                android:text="View" />
                         </LinearLayout>
 
 
 
                     </LinearLayout>
 
-                    <!-- Row 4 -->
+                    <!-- Row 1 -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginEnd="10dp"
+                        android:layout_marginTop="10dp"
                         android:weightSum="1"
                         android:orientation="horizontal">
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.25"
                             android:orientation="horizontal">
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerInParent="true"
                                 android:gravity="center_vertical"
-                                android:text="Abubadi Abduh" />
+                                android:text="Ahmad Hasnol" />
                         </LinearLayout>
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="0.6"
+                            android:layout_weight="0.35"
                             android:orientation="horizontal">
                             <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.Material3.Button"
+                                style="@style/Widget.Material3.Button.TextButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerHorizontal="true"
-                                app:icon="@drawable/baseline_vote_24"
-                                android:text="Vote" />
+                                android:text="Approve" />
                         </LinearLayout>
-
-
-
-                    </LinearLayout>
-
-                    <!-- Row 5 -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="10dp"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
-
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="0.4"
                             android:orientation="horizontal">
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_centerInParent="true"
-                                android:gravity="center_vertical"
-                                android:text="Yew Yuin Tong" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="0.6"
-                            android:orientation="horizontal">
                             <com.google.android.material.button.MaterialButton
-                                style="@style/Widget.Material3.Button"
+                                style="@style/Widget.Material3.Button.TextButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_centerHorizontal="true"
-                                app:icon="@drawable/baseline_vote_24"
-                                android:text="Vote" />
+                                android:text="View" />
                         </LinearLayout>
 
 
 
                     </LinearLayout>
+
 
                 </LinearLayout>
 
@@ -376,6 +393,19 @@
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAdminApplicationResult"
+            style="@style/Widget.Material3.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            app:icon="@drawable/baseline_vote_24"
+            android:text="View Voting Results" />
+
+
+
     </LinearLayout>
+
 
 </ScrollView>
