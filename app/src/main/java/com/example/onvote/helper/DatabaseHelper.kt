@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.example.onvote.datamodel.UserModel
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null, 1){
 
@@ -23,7 +24,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
 
     override fun onCreate(myDB: SQLiteDatabase) {
         myDB.execSQL(
-            "CREATE TABLE USERS(UserID INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE, email TEXT, password TEXT, userGoal INTEGER DEFAULT 53)"
+            "CREATE TABLE USERS(sID INTEGER PRIMARY KEY AUTOINCREMENT, sName TEXT, sFaculty TEXT, sUsername TEXT UNIQUE, sEmail TEXT, sPass TEXT, sVote INTEGER DEFAULT 0)"
         )
     }
 
@@ -32,22 +33,24 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
         onCreate(myDB)
     }
 
-    fun insertData(username: String, email: String, password: String): Boolean {
+    fun insertData(sName: String, sFaculty: String, sUsername: String, sEmail: String, sPass: String): Boolean {
         val myDB = this.writableDatabase
         val contentValues = ContentValues()
-        contentValues.put("username", username)
-        contentValues.put("email", email)
-        contentValues.put("password", password)
-        val result = myDB.insert("users", null, contentValues)
+        contentValues.put("sName", sName)
+        contentValues.put("sFaculty", sFaculty)
+        contentValues.put("sUsername", sUsername)
+        contentValues.put("sEmail", sEmail)
+        contentValues.put("sPass", sPass)
+        val result = myDB.insert("USERS", null, contentValues)
 
         return result != -1L
     }
 
-    fun checkUsername(username: String): Boolean {
+    fun checkUsername(sUsername: String): Boolean {
         val myDB = this.readableDatabase
         val cursor = myDB.rawQuery(
-            "SELECT * FROM users WHERE username = ?",
-            arrayOf(username)
+            "SELECT * FROM users WHERE sUsername = ?",
+            arrayOf(sUsername)
         )
 
         val exists = cursor.count > 0
@@ -56,19 +59,19 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
     }
 
     @SuppressLint("Range")
-    fun checkUsernamePassword(username: String, password: String): Int {
+    fun checkUsernamePassword(sUsername: String, sPass: String): Int {
         val myDB = this.readableDatabase
         val cursor = myDB.rawQuery(
-            "SELECT * FROM users WHERE username = ? and password = ?",
-            arrayOf(username, password)
+            "SELECT * FROM users WHERE sUsername = ? and sPass = ?",
+            arrayOf(sUsername, sPass)
         )
 
         if (cursor.count > 0) {
             cursor.moveToFirst()
-            val userID = cursor.getInt(0)
+            val sID = cursor.getInt(0)
             cursor.close()
-            Log.d(TAG, "checkUsernamePassword: $userID")
-            return userID
+            Log.d(TAG, "checkUsernamePassword: $sID")
+            return sID
         } else {
             cursor.close()
             return -1
@@ -76,27 +79,27 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
     }
 
 
-/*
     @SuppressLint("Range")
-    fun getUser(UserID: Int): UserModel? {
+    fun getUser(sID: Int): UserModel? {
         val db = this.readableDatabase
         var userModel: UserModel? = null
-        val query = "SELECT * FROM users WHERE UserID = ?"
-        val userCursor = db.rawQuery(query, arrayOf(UserID.toString()))
+        val query = "SELECT * FROM users WHERE sID = ?"
+        val userCursor = db.rawQuery(query, arrayOf(sID.toString()))
 
         if (userCursor.moveToFirst()) {
             userModel = UserModel(
-                userCursor.getInt(userCursor.getColumnIndex("UserID")),
-                userCursor.getString(userCursor.getColumnIndex("username")),
-                userCursor.getString(userCursor.getColumnIndex("email")),
-                userCursor.getString(userCursor.getColumnIndex("password")),
-                userCursor.getInt(userCursor.getColumnIndex("userGoal"))
+                userCursor.getInt(userCursor.getColumnIndex("sID")),
+                userCursor.getString(userCursor.getColumnIndex("sName")),
+                userCursor.getString(userCursor.getColumnIndex("sFaculty")),
+                userCursor.getString(userCursor.getColumnIndex("sUsername")),
+                userCursor.getString(userCursor.getColumnIndex("sEmail")),
+                userCursor.getString(userCursor.getColumnIndex("sPass")),
+                userCursor.getInt(userCursor.getColumnIndex("sVote"))
             )
         }
         userCursor.close()
         return userModel
     }
-*/
 
 
 }
