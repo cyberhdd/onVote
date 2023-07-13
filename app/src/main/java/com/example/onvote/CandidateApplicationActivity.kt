@@ -56,16 +56,18 @@ class CandidateApplicationActivity : AppCompatActivity() {
         btnSubmit.setOnClickListener {
             validate(
                 achievement.text.toString(),
-                manifesto.text.toString()
+                manifesto.text.toString(),
+                userID
             )
         }
     }
 
-    private fun validate(achievements: String, manifesto: String){
+    private fun validate(achievements: String, manifesto: String, userID:Int){
         if (achievements.isEmpty() || manifesto.isEmpty()) {
             Toast.makeText(this, "Please enter all the fields", Toast.LENGTH_SHORT).show()
         }
         else{
+            databaseHelper.insertCandidate(userID, achievements, manifesto)
             Toast.makeText(this, "Your application has been submitted", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
