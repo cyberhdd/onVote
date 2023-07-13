@@ -2,6 +2,7 @@ package com.example.onvote.helper
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 
 class Session(context: Context) {
     private val sp: SharedPreferences = context.getSharedPreferences("com.onvote.login", Context.MODE_PRIVATE)
@@ -9,6 +10,7 @@ class Session(context: Context) {
 
     fun setUserID(userID: Int) {
         sp.edit().putInt("userID", userID).apply() // save userID in shared preferences
+        Log.d("UserID", userID.toString())
     }
 
     fun getUserID(): Int {
