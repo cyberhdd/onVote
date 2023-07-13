@@ -23,13 +23,18 @@
             android:exported="true" />
         <activity
             android:name=".CandidateApplicationActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".DashboardActivity"
+            />
         <activity
             android:name=".VoteActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".DashboardActivity"
+            />
         <activity
             android:name=".DashboardActivity"
-            android:exported="true" />
+            android:exported="true"
+            />
         <activity
             android:name=".LoginActivity"
             android:exported="true" />

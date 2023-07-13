@@ -1,5 +1,6 @@
 package com.example.onvote
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +18,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var DB: DatabaseHelper
     private lateinit var session: Session
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -40,16 +42,16 @@ class LoginActivity : AppCompatActivity() {
                 if (userID > 0) {
                     session.setUserID(userID)
                     val isAdmin = DB.checkAdmin(user, pass)
-                    var intent = Intent(this, DashboardActivity::class.java)
+                    var signInIntent = Intent(this, DashboardActivity::class.java)
                         //check if user is Admin
                         if (isAdmin > 0){
                             Toast.makeText(this, "Sign in successful as Admin", Toast.LENGTH_SHORT).show()
-                            intent = Intent(this, WelcomeActivity::class.java)
+                            signInIntent = Intent(this, WelcomeActivity::class.java)
                         }
                         else{
                             Toast.makeText(this, "Sign in successful as Student", Toast.LENGTH_SHORT).show()
                         }
-                    startActivity(intent)
+                    startActivity(signInIntent)
                 } else {
                     Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show()
                 }

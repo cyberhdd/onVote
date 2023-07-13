@@ -28,10 +28,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Note: Your application will be reviewed before approval" />
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Signed in as: Madalitso" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Signed in as: " />
+                <TextView
+                    android:id="@+id/tvApplyName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Madalitso" />
+            </LinearLayout>
         </LinearLayout>
 
 
@@ -66,7 +76,7 @@
                     android:gravity="center_vertical"
                     android:text="Faculty: " />
                 <TextView
-                    android:id="@+id/tvApplicationFac"
+                    android:id="@+id/tvApplyFac"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerInParent="true"
@@ -80,7 +90,7 @@
                 android:layout_weight="0.7"
                 android:orientation="horizontal">
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnDashboardLogout"
+                    android:id="@+id/btnApplyLogout"
                     style="@style/Widget.Material3.Button.IconButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -131,6 +141,7 @@
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
                         android:hint="Enter achievements">
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etApplyAchieve"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textMultiLine"
@@ -159,6 +170,7 @@
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
                         android:hint="Enter manifesto">
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etApplyManifest"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textMultiLine"
@@ -172,7 +184,7 @@
 
                     <com.google.android.material.button.MaterialButton
                         style="@style/Widget.Material3.Button.OutlinedButton"
-                        android:id="@+id/btnApplicationSend"
+                        android:id="@+id/btnApplySubmit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
