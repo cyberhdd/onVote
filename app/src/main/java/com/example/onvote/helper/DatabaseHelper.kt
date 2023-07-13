@@ -7,6 +7,7 @@ import android.content.SharedPreferences
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import com.example.onvote.datamodel.CandidateModel
 import com.example.onvote.datamodel.UserModel
 
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null, 1){
@@ -87,6 +88,19 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
         return exists
     }
 
+    //check candidate if exist
+    fun checkCandidate(sID: Int): Boolean {
+        val myDB = this.readableDatabase
+        val cursor = myDB.rawQuery(
+            "SELECT * FROM candidates WHERE sID = ?",
+            arrayOf(sID.toString())
+        )
+
+        val exists = cursor.count > 0
+        cursor.close()
+        return exists
+    }
+
     //check user username & pass
     @SuppressLint("Range")
     fun checkUsernamePassword(sUsername: String, sPass: String): Int {
@@ -151,6 +165,28 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
         }
         userCursor.close()
         return userModel
+    }
+
+    //read candidate
+    @SuppressLint("Range")
+    fun getCandidate(cID: Int): CandidateModel? {
+        val db = this.readableDatabase
+        var candidateModel: CandidateModel? = null
+        val query = "SELECT * FROM candidates WHERE cID = ?"
+        val userCursor = db.rawQuery(query, arrayOf(cID.toString()))
+
+        if (userCursor.moveToFirst()) {
+            candidateModel = CandidateModel(
+                userCursor.getInt(userCursor.getColumnIndex("cID")),
+                userCursor.getInt(userCursor.getColumnIndex("sID")),
+                userCursor.getString(userCursor.getColumnIndex("cManif")),
+                userCursor.getString(userCursor.getColumnIndex("cAchieve")),
+                userCursor.getInt(userCursor.getColumnIndex("cApprove")),
+                userCursor.getInt(userCursor.getColumnIndex("cVotes"))
+            )
+        }
+        userCursor.close()
+        return candidateModel
     }
 
 

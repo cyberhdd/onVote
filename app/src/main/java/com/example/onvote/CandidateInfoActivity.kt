@@ -4,7 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.TextView
+import androidx.appcompat.app.ActionBar
 import com.example.onvote.helper.DatabaseHelper
 import com.example.onvote.helper.Session
 import com.google.android.material.button.MaterialButton
@@ -28,6 +31,11 @@ class CandidateInfoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_candidate_info)
 
+        //back on actionbar
+        //not needed if child to parent
+        //but if implemented back to previous activity without reset
+        val actionBar: ActionBar? = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
         btnLogout = findViewById(R.id.btnInfoLogout)
         uName = findViewById(R.id.tvInfoName)
@@ -43,10 +51,21 @@ class CandidateInfoActivity : AppCompatActivity() {
 
         val userID = session.getUserID()
         Log.d(TAG, "userID from Session: $userID")
+        val cID = session.getCandidateID()
+        Log.d(TAG, "cID from Session: $cID")
 
         var userModel = databaseHelper.getUser(userID)
+        var candidateModel = databaseHelper.getCandidate(cID)
+        var candidateUserModel = candidateModel?.let { databaseHelper.getUser(it.sID) }
 
         uName.text = userModel?.sName
+        cFacult.text = candidateUserModel?.sFaculty
+        cName.text = candidateUserModel?.sName
+        cUsername.text = candidateUserModel?.sUsername
+        cEmail.text = candidateUserModel?.sEmail
+        cManif.text = candidateModel?.cManif
+        cAchieve.text = candidateModel?.cAchieve
+
 
 
         btnLogout.setOnClickListener {
@@ -55,5 +74,23 @@ class CandidateInfoActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    //for the back button in action bar
+    //not needed if child to parent
+    //when implemented, back to parent activity without resting the parent
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    //for the back button in action bar
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        return true
     }
 }

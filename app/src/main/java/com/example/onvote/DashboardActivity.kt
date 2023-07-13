@@ -17,6 +17,7 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var btnVote: MaterialButton
     private lateinit var btnApply: MaterialButton
     private lateinit var btnLogout: MaterialButton
+    private lateinit var btnInfo: MaterialButton
     private lateinit var faculty: TextView
     private lateinit var uName: TextView
     private lateinit var databaseHelper: DatabaseHelper
@@ -29,6 +30,7 @@ class DashboardActivity : AppCompatActivity() {
         btnVote = findViewById(R.id.btnDashboardVote)
         btnApply = findViewById(R.id.btnDashboardApply)
         btnLogout = findViewById(R.id.btnDashboardLogout)
+        btnInfo = findViewById(R.id.btnDashboardInfo)
         faculty = findViewById(R.id.tvDashboardFac)
         uName = findViewById(R.id.tvDashboardName)
         databaseHelper = DatabaseHelper(this)
@@ -49,6 +51,12 @@ class DashboardActivity : AppCompatActivity() {
 
         btnApply.setOnClickListener {
             val intent = Intent(this, CandidateApplicationActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnInfo.setOnClickListener {
+            val intent = Intent(this, CandidateInfoActivity::class.java)
+            session.setCandidateID(1)
             startActivity(intent)
         }
 
