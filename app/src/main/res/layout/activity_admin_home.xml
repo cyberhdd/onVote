@@ -28,10 +28,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Please review the candidate applications" />
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Signed in as: Admin" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Signed in as: " />
+                <TextView
+                    android:id="@+id/tvAdminAppName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Admin" />
+            </LinearLayout>
         </LinearLayout>
 
 
@@ -80,7 +90,7 @@
                 android:layout_weight="0.7"
                 android:orientation="horizontal">
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnDashboardLogout"
+                    android:id="@+id/btnAdminAppLogout"
                     style="@style/Widget.Material3.Button.IconButton"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -394,7 +404,7 @@
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAdminApplicationResult"
+            android:id="@+id/btnAdminAppResult"
             style="@style/Widget.Material3.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

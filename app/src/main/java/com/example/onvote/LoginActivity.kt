@@ -46,7 +46,7 @@ class LoginActivity : AppCompatActivity() {
                         //check if user is Admin
                         if (isAdmin > 0){
                             Toast.makeText(this, "Sign in successful as Admin", Toast.LENGTH_SHORT).show()
-                            signInIntent = Intent(this, WelcomeActivity::class.java)
+                            signInIntent = Intent(this, AdminHomeActivity::class.java)
                         }
                         else{
                             Toast.makeText(this, "Sign in successful as Student", Toast.LENGTH_SHORT).show()
