@@ -167,7 +167,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
         return userModel
     }
 
-    //read candidate
+    //read specific candidate
     @SuppressLint("Range")
     fun getCandidate(cID: Int): CandidateModel? {
         val db = this.readableDatabase
@@ -187,6 +187,56 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
         }
         userCursor.close()
         return candidateModel
+    }
+
+    //read all approved candidate
+    @SuppressLint("Range")
+    fun getAllCandidate(): ArrayList<CandidateModel> {
+        val db = readableDatabase
+        val arrayList = ArrayList<CandidateModel>()
+        val query = "SELECT * FROM candidates WHERE cApprove=?"
+        val candidateCursor = db.rawQuery(query, arrayOf("1"))
+
+        if (candidateCursor.count > 0) {
+            while (candidateCursor.moveToNext()) {
+                val candidateModel = CandidateModel(
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("cID")),
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("sID")),
+                    candidateCursor.getString(candidateCursor.getColumnIndex("cManif")),
+                    candidateCursor.getString(candidateCursor.getColumnIndex("cAchieve")),
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("cApprove")),
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("cVotes"))
+                )
+                arrayList.add(candidateModel)
+            }
+        }
+        candidateCursor.close()
+        return arrayList
+    }
+
+    //read all candidate
+    @SuppressLint("Range")
+    fun getAllCandidates(): ArrayList<CandidateModel> {
+        val db = readableDatabase
+        val arrayList = ArrayList<CandidateModel>()
+        val query = "SELECT * FROM candidates"
+        val candidateCursor = db.rawQuery(query, null)
+
+        if (candidateCursor.count > 0) {
+            while (candidateCursor.moveToNext()) {
+                val candidateModel = CandidateModel(
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("cID")),
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("sID")),
+                    candidateCursor.getString(candidateCursor.getColumnIndex("cManif")),
+                    candidateCursor.getString(candidateCursor.getColumnIndex("cAchieve")),
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("cApprove")),
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("cVotes"))
+                )
+                arrayList.add(candidateModel)
+            }
+        }
+        candidateCursor.close()
+        return arrayList
     }
 
 

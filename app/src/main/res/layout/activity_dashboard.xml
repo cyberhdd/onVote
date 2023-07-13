@@ -181,6 +181,11 @@
 
                     </LinearLayout>
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvDashboardUser"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
                     <!-- Row 1 -->
                     <LinearLayout
                         android:layout_width="match_parent"
