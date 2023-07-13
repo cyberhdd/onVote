@@ -24,7 +24,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
 
     override fun onCreate(myDB: SQLiteDatabase) {
         myDB.execSQL(
-            "CREATE TABLE USERS(sID INTEGER PRIMARY KEY AUTOINCREMENT, sName TEXT, sFaculty TEXT, sUsername TEXT UNIQUE, sEmail TEXT, sPass TEXT, sVote INTEGER DEFAULT 0)"
+            "CREATE TABLE USERS(sID INTEGER PRIMARY KEY AUTOINCREMENT, sName TEXT, sFaculty TEXT, sUsername TEXT UNIQUE, sEmail TEXT, sPass TEXT, sVote INTEGER DEFAULT 0, isAdmin INTEGER DEFAULT 0)"
         )
     }
 
@@ -78,6 +78,26 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
         }
     }
 
+    //check if user is admin
+    @SuppressLint("Range")
+    fun checkAdmin(sUsername: String, sPass: String): Int {
+        val myDB = this.readableDatabase
+        val cursor = myDB.rawQuery(
+            "SELECT * FROM users WHERE sUsername = ? and sPass = ? and isAdmin = 1",
+            arrayOf(sUsername, sPass)
+        )
+
+        if (cursor.count > 0) {
+            cursor.moveToFirst()
+            val sID = cursor.getInt(0)
+            cursor.close()
+            Log.d(TAG, "adminID: $sID")
+            return sID
+        } else {
+            cursor.close()
+            return -1
+        }
+    }
 
     @SuppressLint("Range")
     fun getUser(sID: Int): UserModel? {
@@ -94,7 +114,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
                 userCursor.getString(userCursor.getColumnIndex("sUsername")),
                 userCursor.getString(userCursor.getColumnIndex("sEmail")),
                 userCursor.getString(userCursor.getColumnIndex("sPass")),
-                userCursor.getInt(userCursor.getColumnIndex("sVote"))
+                userCursor.getInt(userCursor.getColumnIndex("sVote")),
+                userCursor.getInt(userCursor.getColumnIndex("isAdmin"))
             )
         }
         userCursor.close()

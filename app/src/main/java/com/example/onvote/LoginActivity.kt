@@ -39,8 +39,16 @@ class LoginActivity : AppCompatActivity() {
                 val userID = DB.checkUsernamePassword(user, pass)
                 if (userID > 0) {
                     session.setUserID(userID)
-                    Toast.makeText(this, "Sign in successful", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, DashboardActivity::class.java)
+                    val isAdmin = DB.checkAdmin(user, pass)
+                    var intent = Intent(this, DashboardActivity::class.java)
+                        //check if user is Admin
+                        if (isAdmin > 0){
+                            Toast.makeText(this, "Sign in successful as Admin", Toast.LENGTH_SHORT).show()
+                            intent = Intent(this, WelcomeActivity::class.java)
+                        }
+                        else{
+                            Toast.makeText(this, "Sign in successful as Student", Toast.LENGTH_SHORT).show()
+                        }
                     startActivity(intent)
                 } else {
                     Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show()
