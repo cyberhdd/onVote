@@ -27,16 +27,12 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
             "CREATE TABLE USERS(sID INTEGER PRIMARY KEY AUTOINCREMENT, sName TEXT, sFaculty TEXT, sUsername TEXT UNIQUE, sEmail TEXT, sPass TEXT, sVote INTEGER DEFAULT 0, isAdmin INTEGER DEFAULT 0)"
         )
         myDB.execSQL(
-            "CREATE TABLE VOTES(vID INTEGER PRIMARY KEY AUTOINCREMENT, sID INTEGER DEFAULT 0, cID INTEGER DEFAULT 0)"
-        )
-        myDB.execSQL(
-            "CREATE TABLE CANDIDATES(cID INTEGER PRIMARY KEY AUTOINCREMENT, sID INTEGER DEFAULT 0, cManif TEXT DEFAULT 'None', cAchieve DEFAULT 'None')"
+            "CREATE TABLE CANDIDATES(cID INTEGER PRIMARY KEY AUTOINCREMENT, sID INTEGER DEFAULT 0, cManif TEXT DEFAULT 'None', cAchieve DEFAULT 'None', cApprove INTEGER DEFAULT 0, cVotes INTEGER DEFAULT 0)"
         )
     }
 
     override fun onUpgrade(myDB: SQLiteDatabase, i: Int, i1: Int) {
         myDB.execSQL("DROP TABLE IF EXISTS USERS")
-        myDB.execSQL("DROP TABLE IF EXISTS VOTES")
         myDB.execSQL("DROP TABLE IF EXISTS CANDIDATES")
         onCreate(myDB)
     }
@@ -55,16 +51,6 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
         return result != -1L
     }
 
-    //insert vote
-    fun insertVote(sID:Int, cID: Int): Boolean{
-        val myDB = this.writableDatabase
-        val contentValues = ContentValues()
-        contentValues.put("sID", sID)
-        contentValues.put("cID", cID)
-        val result = myDB.insert("VOTES", null, contentValues)
-
-        return result != -1L
-    }
 
     //insert candidate
     fun insertCandidate(sID:Int, cAchieve: String, cManif:String): Boolean{
@@ -73,6 +59,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
         contentValues.put("sID", sID)
         contentValues.put("cAchieve", cAchieve)
         contentValues.put("cManif", cManif)
+        val result = myDB.insert("CANDIDATES", null, contentValues)
+
+        return result != -1L
+    }
+
+    //insert vote
+    fun insertVote(cID: Int): Boolean{
+        val myDB = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("cID", cID)
         val result = myDB.insert("CANDIDATES", null, contentValues)
 
         return result != -1L
