@@ -52,7 +52,7 @@ class DashboardActivity : AppCompatActivity() {
         faculty.text = userModel?.sFaculty
 
 
-        candidateArrayList = databaseHelper.getAllCandidate()
+        candidateArrayList = databaseHelper.getAllApprovedFacultyCandidate(userModel!!.sFaculty)
         rvDashboardUser.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rvDashboardUser.adapter = CandidateAdapter(this, candidateArrayList)
 

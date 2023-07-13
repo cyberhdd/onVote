@@ -191,11 +191,62 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
 
     //read all approved candidate
     @SuppressLint("Range")
-    fun getAllCandidate(): ArrayList<CandidateModel> {
+    fun getAllApprovedCandidate(): ArrayList<CandidateModel> {
         val db = readableDatabase
         val arrayList = ArrayList<CandidateModel>()
         val query = "SELECT * FROM candidates WHERE cApprove=?"
-        val candidateCursor = db.rawQuery(query, arrayOf("1"))
+        val candidateCursor = db.rawQuery(query, arrayOf("1")) //1 for isApproved
+
+        if (candidateCursor.count > 0) {
+            while (candidateCursor.moveToNext()) {
+                val candidateModel = CandidateModel(
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("cID")),
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("sID")),
+                    candidateCursor.getString(candidateCursor.getColumnIndex("cManif")),
+                    candidateCursor.getString(candidateCursor.getColumnIndex("cAchieve")),
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("cApprove")),
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("cVotes"))
+                )
+                arrayList.add(candidateModel)
+            }
+        }
+        candidateCursor.close()
+        return arrayList
+    }
+
+    //read all approved faculty candidate
+    @SuppressLint("Range")
+    fun getAllApprovedFacultyCandidate(sFaculty: String): ArrayList<CandidateModel> {
+        val db = readableDatabase
+        val arrayList = ArrayList<CandidateModel>()
+        //select StudentID from a faculty, then get candidates who are approved and in the faculty studentID list
+        val query = "SELECT * FROM candidates WHERE cApprove=? AND sID IN (SELECT sID FROM users WHERE sFaculty=?)"
+        val candidateCursor = db.rawQuery(query, arrayOf("1", sFaculty)) //1 for isApproved
+
+        if (candidateCursor.count > 0) {
+            while (candidateCursor.moveToNext()) {
+                val candidateModel = CandidateModel(
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("cID")),
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("sID")),
+                    candidateCursor.getString(candidateCursor.getColumnIndex("cManif")),
+                    candidateCursor.getString(candidateCursor.getColumnIndex("cAchieve")),
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("cApprove")),
+                    candidateCursor.getInt(candidateCursor.getColumnIndex("cVotes"))
+                )
+                arrayList.add(candidateModel)
+            }
+        }
+        candidateCursor.close()
+        return arrayList
+    }
+
+    //read all pending candidate
+    @SuppressLint("Range")
+    fun getAllPendingCandidate(): ArrayList<CandidateModel> {
+        val db = readableDatabase
+        val arrayList = ArrayList<CandidateModel>()
+        val query = "SELECT * FROM candidates WHERE cApprove=?"
+        val candidateCursor = db.rawQuery(query, arrayOf("0")) //1 for isApproved
 
         if (candidateCursor.count > 0) {
             while (candidateCursor.moveToNext()) {
