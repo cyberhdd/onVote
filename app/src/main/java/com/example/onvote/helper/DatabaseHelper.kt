@@ -188,6 +188,19 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
         }
     }
 
+    //update candidate application status
+    fun candidateApplicationStatus(cID:Int): Boolean {
+        return try{
+            val sqLiteDatabase = this.writableDatabase
+            val userValues = ContentValues()
+            userValues.put("cApprove", 1)
+            sqLiteDatabase.update("CANDIDATES", userValues, "cID = ?", arrayOf(cID.toString()))
+            true
+        } catch (e: Exception){
+            false
+        }
+    }
+
     //read user
     @SuppressLint("Range")
     fun getUser(sID: Int): UserModel? {
