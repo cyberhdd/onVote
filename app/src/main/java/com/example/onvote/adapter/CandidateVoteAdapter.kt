@@ -37,15 +37,23 @@ class CandidateVoteAdapter(private val context: Context, private val candidateMo
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var model = candidateModelArrayList[position]
         var userModel = databaseHelper.getUser(model.sID)
+        var userID = session.getUserID()
+        var loggedInUserModel = databaseHelper.getUser(userID)
         holder.tvCName.text = userModel?.sName
         holder.btnCVote.setOnClickListener{
-            var votes = model.cVotes + 1
-            if(databaseHelper.candidateVote(model.cID, votes)){
-                Toast.makeText(context, "Vote success", Toast.LENGTH_SHORT).show()
+            if(loggedInUserModel?.sVote == 0){
+                var votes = model.cVotes + 1
+                if(databaseHelper.candidateVote(model.cID, votes)){
+                    Toast.makeText(context, "Vote success", Toast.LENGTH_SHORT).show()
+                    databaseHelper.userVote(userID)
+                } else{
+                    Toast.makeText(context, "Vote error", Toast.LENGTH_SHORT).show()
+                }
+                Log.d("Candidate Votes: ", votes.toString())
             } else{
-                Toast.makeText(context, "Vote error", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "You have already voted", Toast.LENGTH_SHORT).show()
             }
-            Log.d("Candidate Votes: ", votes.toString())
+
             val intent = Intent(context, DashboardActivity::class.java)
             context.startActivity(intent)
         }

@@ -156,6 +156,19 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
         }
     }
 
+    //update user vote
+    fun userVote(sID:Int): Boolean {
+        return try{
+            val sqLiteDatabase = this.writableDatabase
+            val userValues = ContentValues()
+            userValues.put("sVote", 1)
+            sqLiteDatabase.update("USERS", userValues, "sID = ?", arrayOf(sID.toString()))
+            true
+        } catch (e: Exception){
+            false
+        }
+    }
+
     //read user
     @SuppressLint("Range")
     fun getUser(sID: Int): UserModel? {
