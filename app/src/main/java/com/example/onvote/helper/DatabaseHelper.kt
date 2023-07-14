@@ -143,6 +143,25 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DBNAME, null,
         }
     }
 
+    //check if user already has an application
+    fun checkExistingApplication(sID: Int): Boolean {
+        val myDB = this.readableDatabase
+        val cursor = myDB.rawQuery(
+            "SELECT * FROM candidates WHERE sID = ?",
+            arrayOf(sID.toString())
+        )
+
+        if (cursor.count > 0) {
+            cursor.moveToFirst()
+            cursor.close()
+            Log.d(TAG, "Candidate sID: $sID")
+            return true
+        } else {
+            cursor.close()
+            return false
+        }
+    }
+
     //update candidate vote
     fun candidateVote(cID:Int, cVotes:Int): Boolean {
         return try{

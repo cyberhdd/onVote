@@ -67,8 +67,13 @@ class CandidateApplicationActivity : AppCompatActivity() {
             Toast.makeText(this, "Please enter all the fields", Toast.LENGTH_SHORT).show()
         }
         else{
-            databaseHelper.insertCandidate(userID, achievements, manifesto)
-            Toast.makeText(this, "Your application has been submitted", Toast.LENGTH_SHORT).show()
+            if (databaseHelper.checkExistingApplication(userID)){
+                Toast.makeText(this, "Error: You have previously submitted an application", Toast.LENGTH_SHORT).show()
+            } else{
+                databaseHelper.insertCandidate(userID, achievements, manifesto)
+                Toast.makeText(this, "Your application has been submitted", Toast.LENGTH_SHORT).show()
+            }
+
             val intent = Intent(this, DashboardActivity::class.java)
             startActivity(intent)
         }
