@@ -187,7 +187,7 @@
                         android:layout_height="wrap_content"/>
 
                     <!-- Row 1 -->
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -239,7 +239,7 @@
 
                     </LinearLayout>
 
-                    <!-- Row 2 -->
+                    &lt;!&ndash; Row 2 &ndash;&gt;
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -292,7 +292,7 @@
 
                     </LinearLayout>
 
-                    <!-- Row 3 -->
+                    &lt;!&ndash; Row 3 &ndash;&gt;
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -345,7 +345,7 @@
 
                     </LinearLayout>
 
-                    <!-- Row 4 -->
+                    &lt;!&ndash; Row 4 &ndash;&gt;
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -398,7 +398,7 @@
 
                     </LinearLayout>
 
-                    <!-- Row 5 -->
+                    &lt;!&ndash; Row 5 &ndash;&gt;
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -451,7 +451,7 @@
 
                     </LinearLayout>
 
-                    <!-- Row 6 -->
+                    &lt;!&ndash; Row 6 &ndash;&gt;
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -504,7 +504,7 @@
 
                     </LinearLayout>
 
-                    <!-- Row 7 -->
+                    &lt;!&ndash; Row 7 &ndash;&gt;
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -557,7 +557,7 @@
 
                     </LinearLayout>
 
-                    <!-- Row 5 -->
+                    &lt;!&ndash; Row 5 &ndash;&gt;
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -608,7 +608,7 @@
 
 
 
-                    </LinearLayout>
+                    </LinearLayout>-->
 
                 </LinearLayout>
 
