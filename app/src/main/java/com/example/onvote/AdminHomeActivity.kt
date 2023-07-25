@@ -18,7 +18,7 @@ import com.google.android.material.textfield.TextInputEditText
 class AdminHomeActivity : AppCompatActivity() {
 
     //tag for logs
-    private val TAG = "Admin Candidate Application Activity"
+    private val TAG = "Admin Candidate Application Home Activity"
 
     private lateinit var btnLogout: MaterialButton
     private lateinit var btnResults: MaterialButton

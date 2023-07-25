@@ -14,15 +14,18 @@ class Session(context: Context) {
         Log.d("UserID", userID.toString())
     }
 
+
     fun getUserID(): Int {
         userID = sp.getInt("userID", 0) // default value 0 (none)
         return userID
     }
 
+
     fun setCandidateID(cID: Int) {
         sp.edit().putInt("cID", cID).apply() // save cID in shared preferences
         Log.d("cID", cID.toString())
     }
+
 
     fun getCandidateID(): Int {
         cID = sp.getInt("cID", 0) // default value 0 (none)

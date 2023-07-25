@@ -68,11 +68,6 @@ class DashboardActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        /*btnInfo.setOnClickListener {
-            val intent = Intent(this, CandidateInfoActivity::class.java)
-            session.setCandidateID(1)
-            startActivity(intent)
-        }*/
 
         btnLogout.setOnClickListener {
             val intent = Intent(this, WelcomeActivity::class.java)
